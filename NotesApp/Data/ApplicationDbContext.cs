@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using NotesApp.Models;
 
 namespace NotesApp.Data
 {
@@ -9,5 +10,6 @@ namespace NotesApp.Data
             : base(options)
         {
         }
+        public DbSet<NotesApp.Models.Note> Note { get; set; }
     }
 }
