@@ -27,6 +27,19 @@
                 <label asp-for="Input.Email"></label>
                 <span asp-validation-for="Input.Email" class="text-danger"></span>
             </div>
+             <div class="form-floating">
+                 
+                <select class="form-control" asp-for="Input.Gender" autocomplete="gender" aria-required="true">
+                    <option>Choose Gender...</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Other">Other</option>
+                    <option value="Helicopter">Helicopter</option>
+                    <option value="T-44">T-44</option>
+                </select>
+                     <span asp-validation-for="Input.Gender" class="text-danger"></span>
+
+            </div>
             <div class="form-floating">
                 <input asp-for="Input.Password" class="form-control" autocomplete="new-password" aria-required="true" />
                 <label asp-for="Input.Password"></label>

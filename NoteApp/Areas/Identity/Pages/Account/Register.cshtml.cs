@@ -72,6 +72,12 @@ namespace NoteApp.Areas.Identity.Pages.Account
         public class InputModel
         {
             [Required]
+            [Display(Name ="Gender")]
+            [StringLength(50, ErrorMessage ="Invalid gender")]
+            public string Gender { get; set; }
+
+
+            [Required]
             [StringLength(50, ErrorMessage = "The firstname should have from 3 to 50 characters", MinimumLength = 3)]
             [Display(Name = "Firstname")]
             public string FirstName { get; set; }
@@ -125,6 +131,7 @@ namespace NoteApp.Areas.Identity.Pages.Account
 
                 user.FirstName = Input.FirstName;
                 user.LastName = Input.LastName;
+                user.Gender = Input.Gender;
 
                 await _userStore.SetUserNameAsync(user, Input.Email, CancellationToken.None);
                 await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None);
