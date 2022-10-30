@@ -33,6 +33,7 @@ public class ApplicationUserEntityConfiguration : IEntityTypeConfiguration<Appli
         builder.Property(u => u.FirstName).HasMaxLength(50).IsRequired();
         builder.Property(u => u.LastName).HasMaxLength(50).IsRequired();
         builder.Property(u => u.Gender).HasMaxLength(50).IsRequired();
+        builder.Property(u => u.UserRole).HasMaxLength(50).IsRequired();
 
     }
 }

@@ -76,6 +76,11 @@ namespace NoteApp.Areas.Identity.Pages.Account
             [StringLength(50, ErrorMessage ="Invalid gender")]
             public string Gender { get; set; }
 
+            [Required]
+            [Display(Name = "UserRole")]
+            [StringLength(50, ErrorMessage = "Invalid user role")]
+            public string UserRole { get; set; }
+
 
             [Required]
             [StringLength(50, ErrorMessage = "The firstname should have from 3 to 50 characters", MinimumLength = 3)]
@@ -132,6 +137,7 @@ namespace NoteApp.Areas.Identity.Pages.Account
                 user.FirstName = Input.FirstName;
                 user.LastName = Input.LastName;
                 user.Gender = Input.Gender;
+                user.UserRole = Input.UserRole;
 
                 await _userStore.SetUserNameAsync(user, Input.Email, CancellationToken.None);
                 await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None);
