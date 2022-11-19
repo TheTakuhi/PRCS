@@ -1,0 +1,64 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using NoteApp.Areas.Identity.Data
+@model IEnumerable<NoteApp.Models.Note>
+@inject UserManager<ApplicationUser> UserManager
+@inject SignInManager<ApplicationUser> SignInManager
+
+@{
+    ViewData["Title"] = "Notes";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>My Notes</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+    <a asp-action="Download">Download All Notes</a>
+</p>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.NoteDescription)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DateStart)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DateEnd)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.NoteState)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                if( item.NoteUserId == @UserManager.GetUserId(User)){
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NoteDescription)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DateStart)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DateEnd)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NoteState)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                        <a asp-action="Delete" asp-route-id="@item.Id">Delete</a> 
+                    </td>
+                </tr>
+                }
+            }
+        </tbody>
+    </table>
+
