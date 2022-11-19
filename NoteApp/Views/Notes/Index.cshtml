@@ -13,6 +13,7 @@
 
 <p>
     <a asp-action="Create">Create New</a>
+    <a asp-action="Download">Download All Notes</a>
 </p>
 
     <table class="table">
@@ -29,9 +30,6 @@
                 </th>
                 <th>
                     @Html.DisplayNameFor(model => model.NoteState)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.NoteUserId)
                 </th>
                 <th></th>
             </tr>
@@ -54,12 +52,9 @@
                         @Html.DisplayFor(modelItem => item.NoteState)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.NoteUserId)
-                    </td>
-                    <td>
                         <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
                         <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                        <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                        <a asp-action="Delete" asp-route-id="@item.Id">Delete</a> 
                     </td>
                 </tr>
                 }

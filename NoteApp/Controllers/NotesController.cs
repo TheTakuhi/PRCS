@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Mime;
+using System.Text;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -22,7 +25,14 @@ namespace NoteApp.Controllers
         // GET: Notes
         public async Task<IActionResult> Index()
         {
-              return View(await _context.Note.ToListAsync());
+            return View(await _context.Note.ToListAsync());
+        }
+
+        [Authorize]
+        public IActionResult Download()
+        {
+            byte[] bytes = Encoding.UTF8.GetBytes("Tady get all notes s current user ID");
+            return File(bytes, "text/plain", "NotesFromProject.txt");
         }
 
         // GET: Notes/Details/5
@@ -44,6 +54,7 @@ namespace NoteApp.Controllers
         }
 
         // GET: Notes/Create
+        [Authorize]
         public IActionResult Create()
         {
             return View();
@@ -54,6 +65,7 @@ namespace NoteApp.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<IActionResult> Create([Bind("Id,NoteDescription,DateStart,DateEnd,NoteState,NoteUserId")] Note note)
         {
             if (ModelState.IsValid)
@@ -67,6 +79,7 @@ namespace NoteApp.Controllers
         }
 
         // GET: Notes/Edit/5
+        [Authorize]
         public async Task<IActionResult> Edit(Guid? id)
         {
             if (id == null || _context.Note == null)
@@ -87,6 +100,7 @@ namespace NoteApp.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<IActionResult> Edit(Guid id, [Bind("Id,NoteDescription,DateStart,DateEnd,NoteState,NoteUserId")] Note note)
         {
             if (id != note.Id)
@@ -118,6 +132,7 @@ namespace NoteApp.Controllers
         }
 
         // GET: Notes/Delete/5
+        [Authorize]
         public async Task<IActionResult> Delete(Guid? id)
         {
             if (id == null || _context.Note == null)
@@ -138,6 +153,7 @@ namespace NoteApp.Controllers
         // POST: Notes/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<IActionResult> DeleteConfirmed(Guid id)
         {
             if (_context.Note == null)

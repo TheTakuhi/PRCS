@@ -546,3 +546,7 @@ C:\Users\kiedr\OneDrive\Dokumenty\Visual Studio 2022\skolniProjekt\PRCS\NoteApp\
 C:\Users\kiedr\OneDrive\Dokumenty\Visual Studio 2022\skolniProjekt\PRCS\NoteApp\bin\Debug\net6.0\Swashbuckle.AspNetCore.Swagger.dll
 C:\Users\kiedr\OneDrive\Dokumenty\Visual Studio 2022\skolniProjekt\PRCS\NoteApp\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\Users\kiedr\OneDrive\Dokumenty\Visual Studio 2022\skolniProjekt\PRCS\NoteApp\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+D:\Stažité Soubory\skola\5S\7PRCS\PRCS\NoteApp\bin\Debug\net6.0\Microsoft.OpenApi.dll
+D:\Stažité Soubory\skola\5S\7PRCS\PRCS\NoteApp\bin\Debug\net6.0\Swashbuckle.AspNetCore.Swagger.dll
+D:\Stažité Soubory\skola\5S\7PRCS\PRCS\NoteApp\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+D:\Stažité Soubory\skola\5S\7PRCS\PRCS\NoteApp\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerUI.dll
