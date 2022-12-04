@@ -16,6 +16,9 @@
     <a asp-action="Download">Download All Notes</a>
 </p>
 
+
+
+
     <table class="table">
         <thead>
             <tr>
@@ -37,7 +40,61 @@
         <tbody>
             @foreach (var item in Model)
             {
-                if( item.NoteUserId == @UserManager.GetUserId(User)){
+            //if user is admin show notes of all users
+            //if user is not admin show only his notes
+            if (User.IsInRole("Admin") || item.NoteUserId == UserManager.GetUserId(User))
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NoteDescription)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DateStart)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DateEnd)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NoteState)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                        <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    </td>
+                </tr>
+            }
+
+            if (User.IsInRole("Admin"))
+            @foreach (var users in UserManager.Users)
+            {
+
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NoteDescription)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DateStart)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DateEnd)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NoteState)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                        <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    </td>
+                </tr>
+            }
+
+            
+            
+
+                
+               /* if( item.NoteUserId == @UserManager.GetUserId(User)){
                 <tr>
                     <td>
                         @Html.DisplayFor(modelItem => item.NoteDescription)
@@ -57,7 +114,7 @@
                         <a asp-action="Delete" asp-route-id="@item.Id">Delete</a> 
                     </td>
                 </tr>
-                }
+                } */
             }
         </tbody>
     </table>
