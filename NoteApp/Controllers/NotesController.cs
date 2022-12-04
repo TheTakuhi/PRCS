@@ -31,8 +31,15 @@ namespace NoteApp.Controllers
         [Authorize]
         public IActionResult Download()
         {
-            byte[] bytes = Encoding.UTF8.GetBytes("Tady get all notes s current user ID");
-            return File(bytes, "text/plain", "NotesFromProject.txt");
+            var notes = _context.Note.ToList();
+            var sb = new StringBuilder();
+            sb.AppendLine("Description, DateStart, DateEnd, State");
+            foreach (var note in notes)
+            {
+                sb.AppendLine($"{note.NoteDescription},{note.DateStart}, {note.DateEnd},{note.NoteState}");
+            }
+
+            return File(Encoding.UTF8.GetBytes(sb.ToString()), MediaTypeNames.Text.Plain, "notes.csv");
         }
 
         // GET: Notes/Details/5
