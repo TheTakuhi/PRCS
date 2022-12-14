@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "iH7zL5AwxNPwWDLbx1rukwnJFJtxZVtCAil6JatC0TT9Z4GwuLQPBvU7CTLofotBopAGRuFphtr/Bck1cQbThw==",
+  "dgSpecHash": "xluHregrzhBhXuoAUXibjCkd7giNbmB4i8vLc75PPHPwJB72/XOf+bshaFDh/b15CoXHWIJeDCR9vpLzmeJ52w==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Sikinka\\Source\\Repos\\PRCS\\NoteApp\\NoteApp.csproj",
+  "projectFilePath": "C:\\Users\\Sikinka\\source\\repos\\PRCS\\NoteApp\\NoteApp.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Sikinka\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\Sikinka\\.nuget\\packages\\messagepack\\2.1.152\\messagepack.2.1.152.nupkg.sha512",

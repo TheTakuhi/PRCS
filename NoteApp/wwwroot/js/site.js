@@ -1,4 +1,26 @@
-﻿// Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-// for details on configuring this project to bundle and minify static web assets.
+﻿$(document).ready(function () {
+    $('#example').DataTable({
+        initComplete: function () {
+            this.api()
+                .columns()
+                .every(function () {
+                    var column = this;
+                    var select = $('<select><option value=""></option></select>')
+                        .appendTo($(column.header()))
+                        .on('change', function () {
+                            var val = $.fn.dataTable.util.escapeRegex($(this).val());
 
-// Write your JavaScript code.
+                            column.search(val ? '^' + val + '$' : '', true, false).draw();
+                        });
+
+                    column
+                        .data()
+                        .unique()
+                        .sort()
+                        .each(function (d, j) {
+                            select.append('<option value="' + d + '">' + d + '</option>');
+                        });
+                });
+        },
+    });
+});
