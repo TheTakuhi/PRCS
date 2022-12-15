@@ -2,8 +2,10 @@
     $('#example').DataTable({
         initComplete: function () {
             this.api()
-                .columns()
+                .columns(3)
                 .every(function () {
+                  //if the column is NoteState
+                    
                     var column = this;
                     var select = $('<select><option value=""></option></select>')
                         .appendTo($(column.header()))

@@ -12,8 +12,8 @@
 <h1>My Notes</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
-    <a asp-action="Download">Download All Notes</a>
+    <a class="btn btn-primary" asp-action="Create">Create <i class="fa-solid fa-plus"></i></a>
+    <a class="btn btn-success" asp-action="Download">Download All<i class="ms-2 fa-solid fa-arrow-down"></i> </a>
 </p>
 
 
@@ -35,12 +35,13 @@
                 <th></th>
             </tr>
         </thead>
+       
         <tbody>
-            @foreach (var item in Model)
+        @if (User.IsInRole("Admin"))
+        {
+            foreach (var item in Model)
             {
-          
-            if (User.IsInRole("Admin") || item.NoteUserId == UserManager.GetUserId(User))
-            {
+                //tahle podmínka by měla být dobře, ale nefunguje "IsInRole Admin", nezobrazí se nic, takže bude problém někde v databázi.
                 <tr>
                     <td>
                         @Html.DisplayFor(modelItem => item.NoteDescription)
@@ -55,17 +56,18 @@
                         @Html.DisplayFor(modelItem => item.NoteState)
                     </td>
                     <td>
-                        <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                        <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                        <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                        <a class="btn btn-warning" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                        <a class="btn btn-info" asp-action="Details" asp-route-id="@item.Id">Details</a>
+                        <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
                     </td>
                 </tr>
             }
-
-            if (User.IsInRole("Admin"))
-               
+        }
+        else
+        {
+            foreach (var item in Model)
             {
-                @foreach (var note in item.NoteUserId )
+                if (item.NoteUserId == @UserManager.GetUserId(User))
                 {
                     <tr>
                         <td>
@@ -81,42 +83,18 @@
                             @Html.DisplayFor(modelItem => item.NoteState)
                         </td>
                         <td>
-                            <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                            <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                            <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                            <a class="btn btn-warning" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                            <a class="btn btn-info" asp-action="Details" asp-route-id="@item.Id">Details</a>
+                            <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
                         </td>
                     </tr>
                 }
-
-                
             }
-
-            
+        }
+    
             
 
-                
-               if( item.NoteUserId == @UserManager.GetUserId(User)){
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.NoteDescription)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.DateStart)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.DateEnd)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.NoteState)
-                    </td>
-                    <td>
-                        <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                        <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                        <a asp-action="Delete" asp-route-id="@item.Id">Delete</a> 
-                    </td>
-                </tr>
-                } 
-            }
+        
         </tbody>
     </table>
 
