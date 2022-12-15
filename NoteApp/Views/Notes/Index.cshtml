@@ -15,8 +15,6 @@
     <a class="btn btn-primary" asp-action="Create">Create <i class="fa-solid fa-plus"></i></a>
     <a class="btn btn-success" asp-action="Download">Download All<i class="ms-2 fa-solid fa-arrow-down"></i> </a>
 </p>
-
-
     <table id="example" class="table">
         <thead>
             <tr>
@@ -37,11 +35,11 @@
         </thead>
        
         <tbody>
-        @if (User.IsInRole("Admin"))
+        @if (@UserManager.GetUserName(User) == "tomasek@admin.cz")
         {
             foreach (var item in Model)
             {
-                //tahle podmínka by měla být dobře, ale nefunguje "IsInRole Admin", nezobrazí se nic, takže bude problém někde v databázi.
+                //Kulhá to na jednu nohu, ale funguje to :D
                 <tr>
                     <td>
                         @Html.DisplayFor(modelItem => item.NoteDescription)
@@ -91,9 +89,6 @@
                 }
             }
         }
-    
-            
-
         
         </tbody>
     </table>

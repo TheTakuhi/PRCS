@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "9WGVAaVT4SpeHdcvStUSeV9nvtzyQQdREqPbwaNAG4c=",
+  "Hash": "xN3jhz00pygaxcDo+/HPoW02izYROqykHZLMMQ+YS1w=",
   "Source": "NoteApp",
   "BasePath": "_content/NoteApp",
   "Mode": "Default",
@@ -2089,6 +2089,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
+    },
+    {
+      "Identity": "C:\\Users\\Sikinka\\source\\repos\\PRCS\\NoteApp\\wwwroot\\noteImg.png",
+      "SourceId": "NoteApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Sikinka\\source\\repos\\PRCS\\NoteApp\\wwwroot\\",
+      "BasePath": "_content/NoteApp",
+      "RelativePath": "noteImg.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\noteImg.png"
     }
   ]
 }
