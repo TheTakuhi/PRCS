@@ -1,2 +1,2 @@
 # PRCS
-.NET + React school project
+ASP.NET PRCS project
